@@ -19,4 +19,5 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 sudo docker run hello-world
 sudo apt update
 sudo apt full-upgrade
+sudo apt autoremove
 audo reboot
