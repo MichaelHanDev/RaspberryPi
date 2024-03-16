@@ -1,0 +1,83 @@
+#Get Information about your IP
+ip address show
+
+#list current docker networks
+sudo docker network ls
+
+#create a docker container
+sudo docker run -itd --rm --name <spec name> <image spec>
+
+# check running containers
+sudo docker ps
+
+#inspect docker utilities
+sudo docker inspect <spec>
+
+#Jump into a container
+sudo docker exec -it <spec name> sh
+
+#stop a container
+sudo docker stop <spec container>
+
+#Create a container with port specification
+sudo docker run -itd --rm -p <spec port>:<spect port> --name <spec name> <image spec>
+
+#Interfaces tied to a virtual bridge
+bridge link
+
+#commands to use in a container
+ip address show
+ping
+ip route
+#LOOKUP NAT MASQUERADING
+
+#The Bridge Network (user-defined bridge)#
+#CON accessing any service won't work by default, requires manual expose of a port
+#PRO The name of containers will have DNS entries which can be pinged by name, typically container ip addresses change when redeploying workloads, in the default network pinging by name is not available
+#PRO Network Isolation protection from the default network
+
+#create a bridge network
+sudo docker network create <spec name>
+#remove a bridge network
+sudo docker network rm <spec name>
+
+
+#Add a container to a bridge network 
+sudo docker run -itd --rm -p <spec port>:<spect port> --network <spec name> --name <spec name> <image spec>
+
+#Host Network
+#When deploying a container to a host network the container shares resources with the host therefore exposing a port is not required
+#Runs directly connected to the host network like a regular application
+#Con no isolation
+
+#Create a container on a host network
+sudo docker sudo docker run -itd --rm --network host --name <spec name> <image spec>
+
+#MacVLAN Network
+#All the advantages of a bridge network
+#exception port exposing un-needed
+#Connect a docker container directly to the physical network, Virtual Ethernet interfaces are directly connect, each container acts like a virtual machine and is given their own corresponding ip
+#Con ocassionaly running multiple mac addresses on one switch port can't be handled on all networks. Port security may have to be changed within the router
+#Con no DHCP
+
+#Create a macVLAN network
+sudo docker network create -d macvlan \
+--subnet <spec home network ip> \
+--gateway <spec router ip> \
+--ip-range <spec ip-range> \
+-o parent=Nemesis \
+<spec name>
+
+#Deploy a container inside a macVLAN
+sudo docker run-itd --rm --network <spec name> \
+--ip <spec ip within dhcp range, inside network) \
+--name <spec container name> <spec image>
+
+#Enabling promiscuous mode on the host
+Reboot
+sudo ip link set <hostname> promisc on
+#Verification
+sudo exec -it <spec container name> sh
+ping <default gateway>
+#if working on a vm enable this in the settings
+#if still does not work go to the router
