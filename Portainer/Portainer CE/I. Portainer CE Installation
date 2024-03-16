@@ -1,0 +1,22 @@
+sudo ufw allow 9443
+sudo ufw allow 8000
+#Portainer Server will expose the UI over port 9443 and expose a TCP tunnel server over port 8000
+#Note to self set UFW to TCP port for 9443 and 8000
+
+#Creation of the volume that Portainer Server will use to store its database:
+docker volume create portainer_data
+
+#Download and install for the Portainer Server container:
+docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+
+#Note to self figure out what this means
+#By default, Portainer generates and uses a self-signed SSL certificate to secure port 9443. Alternatively you can provide your own SSL certificate during installation or via the Portainer UI after installation is complete.
+#If you require HTTP port 9000 open for legacy reasons, add the following to your docker run command: -p 9000:9000
+
+sudo apt update -y
+sudo apt full-upgrade -y
+sudo apt autoremove
+sudo reboot
+
+#Login
+https://localhost:9443
