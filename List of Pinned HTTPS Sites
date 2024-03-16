@@ -1,0 +1,26 @@
+1. https://docs.pi-hole.net/guides/dns/unbound/
+2. https://nmap.org/book/man-host-discovery.html
+3. https://askubuntu.com/questions/469548/which-desktop-environment-does-zorin-os-use-and-how-to-get-for-ubuntu
+4. https://docs.docker.com/network/drivers/macvlan/
+5. https://docs.docker.com/network/drivers/bridge/
+6. https://www.raspberrypi.com/documentation/computers/configuration.html#configure-dhcp
+7. https://hub.docker.com/
+8.https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-configuring_ip_networking_with_nmcli
+9. https://www.jeffgeerling.com/blog/2021/working-multiple-wifi-interfaces-on-raspberry-pi
+10. https://raspberrytips.com/use-vnc-raspberry-pi/#main
+11. https://pimylifeup.com/raspberry-pi-proxy-using-privoxy/
+12. https://wiki.debian.org/AptCacherNg
+13. https://www.kali.org/tools/proxychains-ng/
+14. https://wiki.debian.org/Synaptic
+15. https://medium.com/nerd-for-tech/the-ultimate-guide-to-stay-hidden-online-tor-and-proxy-chaining-10fbcb0519fa
+16. https://support.torproject.org/alternate-designs/
+17. https://raspberrytips.com/access-point-setup-raspberry-pi/
+18. https://www.wireshark.org/
+19. https://docs.docker.com/reference/cli/docker/network/create/
+20. https://docs.docker.com/reference/cli/docker/network/rm/
+21. https://raspberrytips.com/access-point-setup-raspberry-pi/#setting-up-an-access-point-on-raspberry-pi-os-bookworm
+22.https://raspberrytips.com/raspberry-pi-dns-server/
+23. https://raspberrytips.com/raspberry-pi-dns-server/
+24. https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/check-ethernet-and-wifi
+25. https://docs.portainer.io/start/install/server/docker/linux
+26. https://pimylifeup.com/raspberry-pi-portainer/
