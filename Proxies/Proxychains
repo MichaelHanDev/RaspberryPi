@@ -1,0 +1,31 @@
+sudo apt update
+#Reference: https://www.kali.org/tools/proxychains-ng/
+sudo apt install libproxychains4
+sudo apt install proxychains4 -y
+sudo apt autoclean && sudo apt autoremove 
+sudo nano /etc/proxychains4.conf
+
+#Retreive current client distribution
+cat /etc/debian_version
+
+#Installation of Tor for simultaneous use with proxy 
+#Reference: https://support.torproject.org/apt/tor-deb-repo/
+#1. Install apt-transport-https
+sudo apt install apt-transport-https
+#2 Create a new file in /etc/apt/sources.list.d/ named tor.list. Add the following entries:
+sudo nano /etc/apt/sources.list.d/tor.list
+#3 Paste the following entries and replace <Distribution> with retrieved distribution
+   deb     [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org bookworm main
+   deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org bookworm main
+   deb     [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org tor-experimental-bookworm main
+   deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org tor-experimental-bookworm main
+   deb     [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org tor-nightly-main-bookworm main
+   deb-src [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org tor-nightly-main-bookworm main
+#4
+wget -qO- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | tee /usr/share/keyrings/tor-archive-keyring.gpg >/dev/null
+sudo apt update
+sudo apt install tor deb.torproject.org-keyring
+
+#Verification
+sudo service tor start
+service tor status

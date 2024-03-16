@@ -1,0 +1,41 @@
+#Reference: https://packages.debian.org/stable/gnome/gnome-tweaks
+sudo apt-get install gnome-shell
+#Choose GDM shell
+reboot
+sudo apt-get install gnome-tweaks -y
+#Install Blur me
+git clone https://github.com/ckissane/blur-me
+cd blur-me
+make install
+
+
+#In case you have problems with your dynamic timed wallpaper not being updated due to using third-party process to change the wallpaper, you can force the overview blur to be updated with the command:
+#gsettings set org.gnome.desktop.background picture-opacity 99 && gsettings set org.gnome.desktop.background picture-opacity 100
+
+sudo apt-get install meson -y
+
+###DO NOT USE THE BELOW####
+#Update the package index files and install the secure HTTP package.
+sudo apt-get update && sudo apt-get install apt-transport-https
+#Download and add the Google Linux GPG public key.
+wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo gpg  --dearmor -o /usr/share/keyrings/dart.gpg
+# Add the Dart package repository to your Linux system.
+echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=arm64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.list
+#Install the dart SDK using sudo
+sudo apt-get update && sudo apt-get install dart
+###NOTE TO SELF DO NOT USE THE ABOVE ALSO RESTART PI AND REIMAGE#
+
+sudo apt-get install npm
+
+sudo apt-get install gnome-themes-extra -y
+sudo apt-get install gtk-engine-murrine -y
+#Clone the git repository
+git clone https://github.com/ckissane/materia-theme-transparent.git
+#CD into the repo
+cd materia-theme-transparent
+#Configure the project
+meson _build
+meson install -C _build
+
+#HAVE TO RESTART UNTRUSTED PACKAGE DOWNLOADED UPLOAD TO GITHUB
+

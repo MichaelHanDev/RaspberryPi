@@ -1,0 +1,5 @@
+#Install the alien command
+sudo apt-get install alien -y
+
+#Install Network Mapper
+sudo apt-get install Nmap

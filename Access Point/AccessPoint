@@ -1,0 +1,15 @@
+sudo apt update
+sudo apt upgrade -y
+#Enable Wi-Fi interface in Network Manager
+sudo nmcli con add con-name hotspot ifname wlan0 type wifi ssid "RaspberryTips-Wifi"
+#Set security and password
+sudo nmcli con modify hotspot wifi-sec.key-mgmt wpa-psk
+sudo nmcli con modify hotspot wifi-sec.psk "raspberry"
+#Configure Network Manager to run in access point mode, with shared IP addresses on this interface
+sudo nmcli con modify hotspot 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared
+#Edit settings
+sudo nmtui
+#experiencing issues
+journal ctl
+journalctl | grep hotspot
+journal ctl | grep wifi
